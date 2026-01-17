@@ -13,8 +13,72 @@
     </header>
     <main class="container" id="menu">
     </main>
-    <section class="order-summary" id="total">
-        </section>
+    <section class="order-summary" id="total"></section>
+     <div id="formContent" class="hidden">
+                <h2 class="modal-heading" id="modal-heading">Enter card details</h2>
+
+                <form class="payment-form" id="paymentForm" novalidate>
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="cardName" class="sr-only">Cardholder Name</label>
+                        <input 
+                            type="text" 
+                            id="cardName" 
+                            class="form-input"
+                            placeholder="Enter your name"
+                            required
+                            autocomplete="cc-name"
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <!-- Card Number Field -->
+                    <div class="form-group">
+                        <label for="cardNumber" class="sr-only">Card Number</label>
+                        <input 
+                            type="text" 
+                            id="cardNumber" 
+                            class="form-input"
+                            placeholder="Enter card number"
+                            required
+                            maxlength="19"
+                            autocomplete="cc-number"
+                            aria-required="true"
+                            inputmode="numeric"
+                        >
+                    </div>
+
+                    <!-- CVV Field -->
+                    <div class="form-group">
+                        <label for="cardCVV" class="sr-only">CVV Security Code</label>
+                        <input 
+                            type="text" 
+                            id="cardCVV" 
+                            class="form-input"
+                            placeholder="Enter CVV"
+                            required
+                            maxlength="4"
+                            autocomplete="cc-csc"
+                            aria-required="true"
+                            inputmode="numeric"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="pay-btn">
+                        Pay
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success Message (Hidden by default) -->
+            <div class="success-message, hidden" id="successMessage">
+                <div class="success-icon">✓</div>
+                <p class="success-text">Payment Successful!</p>
+                <p class="success-subtext">Thank you for your order.</p>
+            </div>
+        </div>
+    </div>
     <script src="index.js" type="module" defer></script>
 </body>
 </html>

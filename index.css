@@ -301,3 +301,243 @@
         .complete-order-btn:active {
             transform: scale(0.98);
         }
+
+        .hidden {
+            display: none;
+        }
+
+                .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        /* Modal Container */
+        .modal-container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #666;
+        }
+
+        .close-btn:focus {
+            outline: 2px solid #4A90E2;
+            border-radius: 4px;
+        }
+
+        /* Modal Heading */
+        .modal-heading {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+        }
+
+        /* Form */
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Form Group */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: normal;
+        }
+
+        /* Input Fields */
+        .form-input {
+            padding: 16px;
+            font-size: 1.1rem;
+            border: 2px solid #d1d1d1;
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #16DB99;
+        }
+
+        .form-input:invalid:not(:placeholder-shown) {
+            border-color: #ff4444;
+        }
+
+        /* Pay Button */
+        .pay-btn {
+            width: 100%;
+            padding: 18px;
+            background: #16DB99;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            font-family: 'Georgia', serif;
+            margin-top: 10px;
+        }
+
+        .pay-btn:hover {
+            background: #14C589;
+            transform: translateY(-1px);
+        }
+
+        .pay-btn:active {
+            transform: translateY(0);
+            background: #12B57A;
+        }
+
+        .pay-btn:focus {
+            outline: 3px solid #4A90E2;
+            outline-offset: 2px;
+        }
+
+        /* Demo Button (for testing) */
+        .demo-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .open-modal-btn {
+            padding: 15px 30px;
+            background: #16DB99;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .open-modal-btn:hover {
+            background: #14C589;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .success-text {
+            font-size: 1.5rem;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .success-subtext {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 430px) {
+            .modal-container {
+                padding: 30px 20px;
+            }
+
+            .modal-heading {
+                font-size: 1.6rem;
+            }
+
+            .form-input {
+                padding: 14px;
+                font-size: 1rem;
+            }
+
+            .pay-btn {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+

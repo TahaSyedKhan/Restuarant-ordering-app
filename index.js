@@ -8,6 +8,9 @@ document.addEventListener('click', function(e) {
         handleAddItemButton(e.target.dataset.item)
     } else if (e.target.dataset.index) {
         removeItem(e.target.dataset.index)
+    } else if(e.target.id == "orderBtn") {
+        const orderForm = document.getElementById("formContent")
+        handleOrderButton(orderForm)
     }
 
 })
@@ -55,7 +58,7 @@ function renderOrder(targetItemArr) {
                 <p class="total-price" aria-label="Total: ">$${total}</p>
         </div>
 
-        <button class="complete-order-btn" 
+        <button id="orderBtn" class="complete-order-btn" 
                 type="button"
                 aria-label="Complete your order">
             Complete order
@@ -73,6 +76,19 @@ function removeItem(item) {
     targetItemArr.splice(item, 1)
     renderOrder(targetItemArr)
 }
+
+function handleOrderButton(order) {
+    order.classList.toggle('hidden')
+}
+
+const fromEle = document.getElementById("paymentForm")
+const success = document.getElementById("successMessage")
+fromEle.addEventListener('submit', function(e) {
+    e.preventDefault()
+    
+    success.classList.toggle('hidden')
+    
+})
 
 function getMenuHtml() {
     let menuHtml = ''
