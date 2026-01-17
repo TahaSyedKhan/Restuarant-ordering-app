@@ -6,31 +6,34 @@ document.addEventListener('click', function(e) {
 
     if(e.target.dataset.item) {
         handleAddItemButton(e.target.dataset.item)
+    } else if (e.target.dataset.index) {
+        removeItem(e.target.dataset.index)
     }
 
 })
 
-const targetItemArr = [] 
+
+let targetItemArr = [] 
 
 function handleAddItemButton(itemId) {
-    console.log('1. Item ID clicked:', itemId)
     const clickedItem = menuArray.find( item => item.id == itemId )
 
     if(clickedItem) {
         targetItemArr.push(clickedItem)
     }
 
-    console.log('2. Found item:', clickedItem)
+    renderOrder(targetItemArr)
+}
 
-    console.log('3. Current array:', targetItemArr)
+function renderOrder(targetItemArr) {
     let itemsHtml = ''
-    targetItemArr.forEach( targetItem => {
+    targetItemArr.forEach( (targetItem, index) => {
         itemsHtml += `
 
             <div class="order-item">
                 <div class="item-info">
                     <span class="item-name">${targetItem.name}</span>
-                    <button class="remove-btn" onclick="removeItem(this)">remove</button>
+                    <button class="remove-btn" data-index=${index}">remove</button>
                 </div>
                 <span class="item-price">$${targetItem.price}</span>
             </div>
@@ -41,9 +44,9 @@ function handleAddItemButton(itemId) {
         return  sum + item.price
     }, 0)
 
-    console.log('4. Total calculated:', total)
     const totalHtml = `
         <div class="order-items">
+            <h2>Your order</h2>
             ${itemsHtml}
         </div>
 
@@ -60,14 +63,16 @@ function handleAddItemButton(itemId) {
     `
     const totalEle = document.getElementById('total')
 
-    console.log('5. Total element found:', totalEle)
 
     if(totalEle) {
         totalEle.innerHTML = totalHtml
     }
 }
 
-
+function removeItem(item) {
+    targetItemArr.splice(item, 1)
+    renderOrder(targetItemArr)
+}
 
 function getMenuHtml() {
     let menuHtml = ''
